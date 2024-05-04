@@ -5,10 +5,10 @@ import {
   increment,
   selectCount
 
-} from './counterSlice';
+} from './ProductListSlice';
 import styles from './Counter.module.css';
 
-export function Counter() {
+export default function ProductList() {
 
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
