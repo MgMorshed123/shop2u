@@ -1,8 +1,11 @@
 import React from 'react'
+import SignUp from '../../../features/Auth/SignUp'
 
 const SignUpPage = () => {
   return (
-    <div>SignUpPage</div>
+    <div>
+      <SignUp></SignUp>
+    </div>
   )
 }
 
