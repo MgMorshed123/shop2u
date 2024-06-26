@@ -9,7 +9,7 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+import { StarIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
 
 const sortOptions = [
@@ -66,6 +66,7 @@ const filters = [
 ]
 
 
+
 const products = [
   {
     id: 1,
@@ -75,36 +76,41 @@ const products = [
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
     color: 'Black',
+    rating: 4.5,
   },
   {
-    id: 1,
+    id: 2,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
     color: 'Black',
+    rating: 4.0,
   },
   {
-    id: 1,
+    id: 3,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
     color: 'Black',
+    rating: 4.2,
   },
   {
-    id: 1,
+    id: 4,
     name: 'Basic Tee',
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
     price: '$35',
     color: 'Black',
+    rating: 3.8,
   },
   // More products...
 ]
+
 
 
 
@@ -373,9 +379,19 @@ export default function ProductList() {
                       {product.name}
                     </a>
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+               
+                  
+                  <p className="mt-1 text-sm text-gray-500">
+                  <StarIcon className='w-6 h-6 inline'>
+                    
+                    </StarIcon>
+                     <span className='align-bottom'> {product.rating}</span>
+                      
+                      </p>
+
+
                 </div>
-                <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                <p className="text-sm font-medium text-gray-900"> $ {product.price}</p>
               </div>
             </div>
           ))}
