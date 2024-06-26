@@ -74,9 +74,10 @@ const products = [
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
+    price: '35',
     color: 'Black',
     rating: 4.5,
+    discountPercentage: 10,
   },
   {
     id: 2,
@@ -84,9 +85,10 @@ const products = [
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
+    price: '35',
     color: 'Black',
     rating: 4.0,
+    discountPercentage: 15,
   },
   {
     id: 3,
@@ -94,9 +96,10 @@ const products = [
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
+    price: '35',
     color: 'Black',
     rating: 4.2,
+    discountPercentage: 20,
   },
   {
     id: 4,
@@ -104,12 +107,15 @@ const products = [
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
     imageAlt: "Front of men's Basic Tee in black.",
-    price: '$35',
+    price: '35',
     color: 'Black',
     rating: 3.8,
+    discountPercentage: 5,
   },
   // More products...
 ]
+
+console.log(products.id)
 
 
 
@@ -363,7 +369,10 @@ export default function ProductList() {
         
         <div className="mt-6 grid grid-cols-3 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
           {products.map((product) => (
-            <div key={product.id} className="group relative">
+
+            
+            <div key={product.id}   className="group relative border-solid border-2 p-2">
+           
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-red-300 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <img
                   src={product.imageSrc}
@@ -391,7 +400,17 @@ export default function ProductList() {
 
 
                 </div>
-                <p className="text-sm font-medium text-gray-900"> $ {product.price}</p>
+
+                      <div>
+
+                      <p className="text-sm block  font-medium text-gray-900"> $ {((parseFloat(product.price) * (1-product.discountPercentage/ 100)))}
+                       
+                      </p>
+
+                      <p className="text-sm block  font-medium text-gray-500 line-through"> $  {product.price}</p>
+                      </div>
+
+                
               </div>
             </div>
           ))}
