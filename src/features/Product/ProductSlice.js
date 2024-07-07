@@ -6,16 +6,10 @@ const initialState = {
   status: 'idle',
 };
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched. Thunks are
-// typically used to make async requests.
-export const fetchAllProductAsync  = createAsyncThunk(
+export const fetchAllProductAsync = createAsyncThunk(
   'product/fetchAllProduct',
-  async (amount) => {
-    const response = await fetchAllProduct(amount);
-    // The value we return becomes the `fulfilled` action payload
+  async () => {
+    const response = await fetchAllProduct();
     return response.data;
   }
 );
@@ -23,16 +17,7 @@ export const fetchAllProductAsync  = createAsyncThunk(
 export const productSlice = createSlice({
   name: 'product',
   initialState,
-  reducers: {
-    increment: (state) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.value += 1;
-    },
-  },
-
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllProductAsync.pending, (state) => {
@@ -40,16 +25,15 @@ export const productSlice = createSlice({
       })
       .addCase(fetchAllProductAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.products += action.payload;
+        state.products = action.payload;  
+        // Corrected assignment
+        // state.products assignment: here i  should use state.products = action.payload instead of state.products += action.payload because += will concatenate the array as a string, which is not the desired behavior.
       });
   },
 });
 
+// Selector function to get all products from the state
+export const selectAllProducts = (state) => state.product.products;
 
-export const { increment } = productSlice.actions;
-
-
-export const selectCount = (state) => state.counter.value;
-
-
+// Export the reducer
 export default productSlice.reducer;
