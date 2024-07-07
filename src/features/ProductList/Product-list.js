@@ -2203,8 +2203,8 @@ export default function ProductList() {
 
                    <div>
 
-                   <p className="text-sm block  font-medium text-gray-900"> $ {((parseFloat(product.price) * (1-product.discountPercentage/ 100)))}
-                    
+                   <p className="text-sm block  font-medium text-gray-900"> $ {((Math.round((product.price) * (1-product.discountPercentage/ 100))))}
+                  
                    </p>
 
                    <p className="text-sm block  font-medium text-gray-500 line-through"> $  {product.price}</p>
