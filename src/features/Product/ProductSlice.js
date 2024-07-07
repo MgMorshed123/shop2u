@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchAllProduct } from './ProductApi';
 
 const initialState = {
-  value: 0,
+  products: [],
   status: 'idle',
 };
 
@@ -40,7 +40,7 @@ export const productSlice = createSlice({
       })
       .addCase(fetchAllProductAsync.fulfilled, (state, action) => {
         state.status = 'idle';
-        state.value += action.payload;
+        state.products += action.payload;
       });
   },
 });

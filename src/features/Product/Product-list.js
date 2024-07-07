@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  incrementAsync,
-  increment,
-  selectCount
+// import {
+//   incrementAsync,
+//   increment,
+//   selectCount
 
-} from './ProductListSlice';
+// } from './ProductListSlice';
 
 
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
@@ -1920,7 +1920,7 @@ brands.map(c=>({value:c, label:c.split('-').join(' '),checked:false}))
 
 export default function ProductList() {
 
-  const count = useSelector(selectCount);
+  // const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
  
